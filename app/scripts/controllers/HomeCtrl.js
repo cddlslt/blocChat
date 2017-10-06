@@ -1,7 +1,7 @@
 (function() {
-    function HomeCtrl() {
-          var home = this;
-          home.rooms = Room.all;
+    function HomeCtrl(Room) {
+        var home = this;
+        home.rooms = Room.all;
     }
 
     angular
