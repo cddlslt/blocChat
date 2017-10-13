@@ -1,22 +1,17 @@
 (function() {
-    function ModalCtrl(Room, $uibModal) {
-        var modal = this;
+    function ModalCtrl(Room, $uibModalInstance) {
 
-        // modal.open = function() {
-        //       $uibModal.open();
-        // }
-
-        modal.close = function() {
-              $uibModal.dismiss();
+        this.cancel = function() {
+              $uibModalInstance.dismiss();
         }
 
-        modal.submit = function(room) {
-              Room.add(room);
-              $uibModal.close();
+        this.createRoom = function() {
+              Room.add(this.newRoom);
+              $uibModalInstance.close();
         }
     }
 
     angular
         .module('blocChat')
-        .controller('ModalCtrl', ['Room', '$uibModal', ModalCtrl])
+        .controller('ModalCtrl', ['Room', '$uibModalInstance', ModalCtrl])
 })();

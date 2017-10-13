@@ -2,12 +2,14 @@
     function HomeCtrl(Room, $uibModal) {
         var home = this;
         home.rooms = Room.all;
+        home.room = Room;
 
-        home.modalOpen = function() {
-            $uibModal.open({
+        home.open = function() {
+            var modalInstance = $uibModal.open({
                 templateUrl: '/templates/modal.html',
-                controller: "ModalCtrl as modal"
-            });
+                controller: 'ModalCtrl',
+                controllerAs: 'modal'
+            })
         }
     }
 

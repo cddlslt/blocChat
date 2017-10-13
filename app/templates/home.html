@@ -1,17 +1,22 @@
-<section>
-    <div class="col-md-3 sidebar">
-        <p class="title">[Bloc Chat]
-            <span class="new-chat-room">
-                <button type="button" ng-click="home.modalOpen">New Room</button>
-              </span>
-          </p>
-      </div>
-        <section class="rooms-list">
-            <p></p>
-            <div ng-repeat="room in home.rooms">{{ room.$id }}</div>
-        </section>
+<main>
 
-  <!-- <ul>
-      <li ng-repeat="room in home.rooms">{{ room.$id }}</li>
-  </ul> -->
-</section>
+    <section>
+        <div class="col-md-3 sidebar">
+            <p class="title">[Bloc Chat]
+                <span class="new-chat-room">
+                    <button type="button" ng-click="home.open()">New Room</button>
+                  </span>
+              </p>
+          </div>
+      </section>
+
+      <section class="rooms-list">
+          <p></p>
+          <div ng-repeat="room in home.rooms">{{ room.$value }}</div>
+          <!-- <p></p>
+          <p></p>
+          <div ng-repeat="room in home.rooms">{{ room }}</div> -->
+      </section>
+
+
+</main>
