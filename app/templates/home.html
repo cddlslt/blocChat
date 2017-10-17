@@ -1,22 +1,30 @@
-<main>
 
-    <section>
-        <div class="col-md-3 sidebar">
-            <p class="title">[Bloc Chat]
-                <span class="new-chat-room">
-                    <button type="button" ng-click="home.open()">New Room</button>
-                  </span>
-              </p>
-          </div>
-      </section>
+<section class="blocchat row">
+    <div class="sidebar col-sm-3">
+        <h1 class="title-name">[Bloc Chat]</h1>
+        <button type="button" ng-click="home.open()" class="btn btn-primary new-room">New Room</button>
 
-      <section class="rooms-list">
-          <p></p>
-          <div ng-repeat="room in home.rooms">{{ room.$value }}</div>
-          <!-- <p></p>
-          <p></p>
-          <div ng-repeat="room in home.rooms">{{ room }}</div> -->
-      </section>
+            <div class="room-list" ng-repeat="room in home.rooms track by $index">
+                <!-- <p></p>
+                <div ng-repeat="room in home.rooms">{{ room.$value }}</div>
+                <p></p>
+                <p></p>
+                <div ng-repeat="room in home.rooms">{{ room }}</div> -->
+                <p class="individual-room" ng-click="home.selectRoom(room)"><a href="#">{{ room.$value }}</a></p>
+              </div>
 
+      </div>
 
-</main>
+      <div class="messages col-sm-9">
+          <h3 class="room-name"> {{  home.currentRoom.$value }} </h3>
+          <table class="msg" ng-repeat="message in currentRoom.messages">
+              <tr>
+                  <td class="msg-username"> {{ message.username }} </td>
+                  <td class="msg-date"> {{ message.sentAt }} </td>
+                </tr>
+              <tr>
+                  <td class="msg-content"> {{ message.content }} </td>
+                </tr>
+            </table>
+        </div>
+  </section>
