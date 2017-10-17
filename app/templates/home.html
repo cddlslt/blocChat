@@ -19,9 +19,9 @@
           <h3 class="room-name"> {{  home.currentRoom.$value }} </h3>
           <table class="msg" ng-repeat="message in home.currentRoom.messages">
               <tr>
-                  <td class="msg-username col-sm-1"> {{ 5 }} </td>
-                  <td class="msg-date col-sm-1"> {{ 4 }} </td>
-                  <td class="msg-content col-sm-10"> {{ 3 }} </td>
+                  <td class="msg-username col-sm-1"> {{ message.username }} </td>
+                  <td class="msg-date col-sm-1"> {{ message.date }} </td>
+                  <td class="msg-content col-sm-10"> {{ message.content }} </td>
                 </tr>
             </table>
         </div>
