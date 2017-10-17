@@ -10,20 +10,18 @@
                 <p></p>
                 <p></p>
                 <div ng-repeat="room in home.rooms">{{ room }}</div> -->
-                <p class="individual-room" ng-click="home.selectRoom(room)"><a href="#">{{ room.$value }}</a></p>
+                <p class="individual-room" ng-click="home.selectRoom(room)">{{ room.$value }}</p>
               </div>
 
       </div>
 
       <div class="messages col-sm-9">
           <h3 class="room-name"> {{  home.currentRoom.$value }} </h3>
-          <table class="msg" ng-repeat="message in currentRoom.messages">
+          <table class="msg" ng-repeat="message in home.currentRoom.messages">
               <tr>
-                  <td class="msg-username"> {{ message.username }} </td>
-                  <td class="msg-date"> {{ message.sentAt }} </td>
-                </tr>
-              <tr>
-                  <td class="msg-content"> {{ message.content }} </td>
+                  <td class="msg-username col-sm-1"> {{ 5 }} </td>
+                  <td class="msg-date col-sm-1"> {{ 4 }} </td>
+                  <td class="msg-content col-sm-10"> {{ 3 }} </td>
                 </tr>
             </table>
         </div>
