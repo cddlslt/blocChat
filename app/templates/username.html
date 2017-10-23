@@ -5,10 +5,10 @@
 
     <div class="modal-body">
         <label>User Name</label>
-        <input type="text" placeholder="Username" ng-required="true" ng-model="user.username">
+       <input type="text" ng-model="user.username" placeholder="e.g. macbook user"/>
       </div>
 
     <div class="modal-footer">
-        <button class="btn btn-success" type="button" ng-click="save(user.username)">Enter</button>
+        <button class="btn btn-success" type="button" ng-click="user.submit()">Enter</button>
       </div>
   </div>

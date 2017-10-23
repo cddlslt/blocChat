@@ -20,7 +20,7 @@
             home.currentRoom.messages = Message.getByRoomId(room.$id);
         };
 
-        
+
     }
 
     angular
