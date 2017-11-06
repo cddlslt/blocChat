@@ -18,13 +18,14 @@
       <div class="messages col-sm-9">
           <h3 class="room-name"> {{  home.currentRoom.$value }} </h3>
           <ul class="msg" ng-repeat="message in home.currentRoom.messages">
+              <li class="msg-date">{{ message.date | date : "EEE MMM d yyyy h:mm a PST" }}</li>
               <li class="msg-username"> <strong>{{ message.username }}</strong>
-                 at {{ message.sortedTime }}</li>
+                 says...</li>              
               <li class="msg-content"> {{ message.content }} </li>
             </ul>
           <form ng-show="home.currentRoom !== undefined">
-              <input type="text" placeholder="Write your message here" class="form-control">
-              <button type="submit" class="btn btn-primary" ng-model"newmsg" ng-click="home.createNewMessage()">Submit</button>
+              <input type="text" placeholder="Write your message here" class="form-control" ng-model="home.newMessage.content">
+              <button type="submit" class="btn btn-primary" ng-click="home.sendMessage()">Submit</button>
             </form>
         </div>
   </section>

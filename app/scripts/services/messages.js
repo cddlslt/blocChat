@@ -7,18 +7,15 @@
         Message.all = messages;
 
         Message.getByRoomId = function(roomId) {
-            var messages = ref.orderByChild("roomId").equalTo(roomId);
-            return $firebaseArray(messages);
+            // var messages = ref.orderByChild("roomId").equalTo(roomId);
+            return $firebaseArray(ref.orderByChild("roomId").equalTo(roomId));
         };
 
         Message.send = function(newMessage) {
-            var ref = firebase.database().ref().child("messages");
-            var msgArray = $firebaseArray(ref);
-              if (newMessage != undefined || newMessage != null) {
-                  msgArray.$add({content: newMessage, roomId: roomId,
-                    sentAt: sortedTime, username: username});
-        }
-    };;
+            messages.$add(newMessage);
+            // newMessage.sentAt = firebase.database.ServerValue.TIMESTAMP;
+        };
+
 
         return Message;
     }

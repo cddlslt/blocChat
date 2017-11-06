@@ -1,15 +1,15 @@
 (function() {
     function HomeCtrl(Room, Message, $uibModal, $cookies) {
-        var home = this;
-        home.rooms = Room.all;
-        home.room = Room;
-        home.currentRoom = null;
-        home.messages = Message.all;
-        home.username = $cookies.get('blocChatCurrentUser');
-        this.sortedTime = $filter('date')(firebase.database.ServerValue.TIMESTAMP);
+        // var home = this;
+        this.rooms = Room.all;
+        this.room = Room;
+        this.currentRoom = null;
+        this.messages = Message.all;
+        this.username = $cookies.get('blocChatCurrentUser');
+        // this.sortedTime = $filter('date')(firebase.database.ServerValue.TIMESTAMP);
 
 
-        home.open = function() {
+        this.open = function() {
             var modalInstance = $uibModal.open({
                 templateUrl: '/templates/modal.html',
                 controller: 'ModalCtrl',
@@ -17,13 +17,17 @@
             })
         };
 
-        home.selectRoom = function(room) {
-            home.currentRoom = room;
-            home.currentRoom.messages = Message.getByRoomId(room.$id);
+        this.selectRoom = function(room) {
+            this.currentRoom = room;
+            this.currentRoom.messages = Message.getByRoomId(this.currentRoom.$id);
         };
 
-        home.createNewMessage = function(newmsg, roomId, username, sortedTime) {
-            this.sentMsg = Message.send(newmsg, roomId, username, sortedTime);
+        this.sendMessage = function(newMessage) {
+            // alert("cake");
+            this.newMessage.roomId = this.currentRoom.$id;
+            this.newMessage.username = this.username;
+            this.newMessage.date = firebase.database.ServerValue.TIMESTAMP;
+            Message.send(this.newMessage);
         };
 
 
