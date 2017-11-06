@@ -6,6 +6,8 @@
         home.currentRoom = null;
         home.messages = Message.all;
         home.username = $cookies.get('blocChatCurrentUser');
+        this.sortedTime = $filter('date')(firebase.database.ServerValue.TIMESTAMP);
+
 
         home.open = function() {
             var modalInstance = $uibModal.open({
@@ -18,6 +20,10 @@
         home.selectRoom = function(room) {
             home.currentRoom = room;
             home.currentRoom.messages = Message.getByRoomId(room.$id);
+        };
+
+        home.createNewMessage = function(newmsg, roomId, username, sortedTime) {
+            this.sentMsg = Message.send(newmsg, roomId, username, sortedTime);
         };
 
 

@@ -17,12 +17,14 @@
 
       <div class="messages col-sm-9">
           <h3 class="room-name"> {{  home.currentRoom.$value }} </h3>
-          <table class="msg" ng-repeat="message in home.currentRoom.messages">
-              <tr>
-                  <td class="msg-username col-sm-1"> {{ message.username }} </td>
-                  <td class="msg-date col-sm-1"> {{ message.date }} </td>
-                  <td class="msg-content col-sm-10"> {{ message.content }} </td>
-                </tr>
-            </table>
+          <ul class="msg" ng-repeat="message in home.currentRoom.messages">
+              <li class="msg-username"> <strong>{{ message.username }}</strong>
+                 at {{ message.sortedTime }}</li>
+              <li class="msg-content"> {{ message.content }} </li>
+            </ul>
+          <form ng-show="home.currentRoom !== undefined">
+              <input type="text" placeholder="Write your message here" class="form-control">
+              <button type="submit" class="btn btn-primary" ng-model"newmsg" ng-click="home.createNewMessage()">Submit</button>
+            </form>
         </div>
   </section>
